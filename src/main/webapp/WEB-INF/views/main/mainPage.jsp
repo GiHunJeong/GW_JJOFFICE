@@ -6,10 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:include page="/WEB-INF/views/templates/cmm2.jsp" flush="false"/>
-<button onclick="moveMainPage();">메인페이지</button>
-<script>
-  function moveMainPage() {
-    location.href = 'main';
-  }
-</script>
+<jsp:useBean id="today" class="java.util.Date" />
+<jsp:include page="/WEB-INF/views/templates/cmm.jsp" flush="false"/>
+
+<jsp:include page="/WEB-INF/views/templates/footer.jsp" flush="false"/>
