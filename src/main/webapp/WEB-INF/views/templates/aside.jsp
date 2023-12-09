@@ -48,7 +48,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-header">TEST MENU</li>
                 <li class="nav-item">
-                    <a href="#" onclick="open_in_frame('')" class="nav-link">
+                    <a href="javascript:void(0);" onclick="fn_moveMenu1Page('menu1');" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Menu1
@@ -57,7 +57,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="javascript:void(0);" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
                             Menu2
@@ -67,13 +67,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="javascript:void(0);" onclick="fn_moveMenu1Page('menu2');" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Top Menu</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="javascript:void(0);" onclick="fn_moveMenu1Page('menu3');" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Bottom Menu</p>
                             </a>
@@ -86,3 +86,8 @@
     </div>
     <!-- /.sidebar -->
 </aside>
+<script>
+    function fn_moveMenu1Page(menuName) {
+        $('#content').load(menuName);
+    }
+</script>
