@@ -3,7 +3,21 @@
 <mapper namespace="com.GW.JJOFFICE.JJOFFICE.auth.repository.AuthRepository">
     <select id="findByEmpId" parameterType="string" resultType="com.GW.JJOFFICE.JJOFFICE.auth.dto.EmployeeDto">
         SELECT
-            e.*
+            e.emp_name AS empName,
+            e.emp_login_id AS empLoginId,
+            e.emp_login_pw AS empLoginPw,
+            e.emp_sn AS empSn,
+            e.emp_phone AS empPhone,
+            e.emp_addr AS empAddr,
+            e.emp_addr_detail AS empAddrDetail,
+            e.emp_addr_zipcode AS empAddrZipcode,
+            e.emp_photo AS empPhoto,
+            e.use_yn AS useYn,
+            e.reg_date AS regDate,
+            e.reg_emp_sn AS regEmpSn,
+            e.mod_date AS modDate,
+            e.mod_emp_sn AS modEmpSn,
+            e.del_date AS delDate
         FROM
             employee AS e
         WHERE

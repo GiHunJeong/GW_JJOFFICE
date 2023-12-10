@@ -8,8 +8,4 @@ import lombok.*;
 public class SignInDto {
     private String empLoginId;
     private String empLoginPw;
-    public SignInDto(EmployeeDto employeeDto) {
-        this.empLoginId = employeeDto.getEmpLoginId();
-        this.empLoginPw = employeeDto.getEmpLoginPw();
-    }
 }
