@@ -25,7 +25,7 @@
                 <img src="resources/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">JJOFFICE USER</a>
+                <a href="#" class="d-block">Admin Page</a>
             </div>
         </div>
 
@@ -68,6 +68,14 @@
                             <a href="javascript:void(0);" onclick="fn_openPage('admin/employeeList');" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>사원 목록</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="javascript:void(0);" onclick="fn_openPage('admin/employeeReg');" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>사원 등록</p>
                             </a>
                         </li>
                     </ul>

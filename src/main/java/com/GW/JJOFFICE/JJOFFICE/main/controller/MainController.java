@@ -12,26 +12,27 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("/")
 @RequiredArgsConstructor
 public class MainController {
     @Autowired
     private final MainService mainService;
-    @GetMapping("")
-    public String indexPage(HttpServletRequest request) {
+    @RequestMapping("/")
+    public String indexPage() {
+        return "redirect:/main";
+    }
+    @RequestMapping( "/main")
+    public String mainPage(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession();
         EmployeeDto employeeDto = (EmployeeDto) session.getAttribute("EmployeeDto");
-
         if(employeeDto != null) {
-            return "redirect:/main";
+            model.addAttribute("userName", employeeDto.getEmpName());
+            return "main/mainPage";
         } else {
             return "redirect:/auth";
         }
-    }
-    @GetMapping("main")
-    public String mainPage() {
-        return "main/mainPage";
     }
 }

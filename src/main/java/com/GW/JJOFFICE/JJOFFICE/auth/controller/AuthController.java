@@ -1,9 +1,6 @@
 package com.GW.JJOFFICE.JJOFFICE.auth.controller;
 
-import com.GW.JJOFFICE.JJOFFICE.auth.dto.EmployeeDto;
-import com.GW.JJOFFICE.JJOFFICE.auth.dto.ResponseDto;
-import com.GW.JJOFFICE.JJOFFICE.auth.dto.SignInDto;
-import com.GW.JJOFFICE.JJOFFICE.auth.dto.SignInResponseDto;
+import com.GW.JJOFFICE.JJOFFICE.auth.dto.*;
 import com.GW.JJOFFICE.JJOFFICE.auth.service.AuthService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -52,6 +49,12 @@ public class AuthController {
         }
         System.out.println(responseDto);
         model.addAttribute("responseDto", responseDto);
+        return "jsonView";
+    }
+    @RequestMapping("/signUp")
+    public String signUp(@RequestBody SignUpDto signUpDto, Model model) {
+        ResponseDto<?> result = authService.signUp(signUpDto);
+        model.addAttribute("rs", result);
         return "jsonView";
     }
     @RequestMapping("/logout")

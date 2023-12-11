@@ -23,4 +23,8 @@ public class AdminPageController {
         model.addAttribute("empList", adminPageService.getEmployeeList());
         return "admin/employee/employeeList";
     }
+    @GetMapping("employeeReg")
+    public String employeeRegPage() {
+        return "admin/employee/employeeReg";
+    }
 }

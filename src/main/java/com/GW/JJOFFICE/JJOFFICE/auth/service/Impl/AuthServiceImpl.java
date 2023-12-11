@@ -1,9 +1,6 @@
 package com.GW.JJOFFICE.JJOFFICE.auth.service.Impl;
 
-import com.GW.JJOFFICE.JJOFFICE.auth.dto.EmployeeDto;
-import com.GW.JJOFFICE.JJOFFICE.auth.dto.ResponseDto;
-import com.GW.JJOFFICE.JJOFFICE.auth.dto.SignInDto;
-import com.GW.JJOFFICE.JJOFFICE.auth.dto.SignInResponseDto;
+import com.GW.JJOFFICE.JJOFFICE.auth.dto.*;
 import com.GW.JJOFFICE.JJOFFICE.auth.repository.AuthRepository;
 import com.GW.JJOFFICE.JJOFFICE.auth.service.AuthService;
 import lombok.RequiredArgsConstructor;
@@ -44,5 +41,40 @@ public class AuthServiceImpl implements AuthService {
 
         SignInResponseDto signInResponseDto = new SignInResponseDto(token, exprTime, employeeDto);
         return ResponseDto.setSuccess("Sign in Success", signInResponseDto);
+    }
+    public ResponseDto<?> signUp(SignUpDto signUpDto) {
+        String empId = signUpDto.getEmpLoginId();
+        String empPw = signUpDto.getEmpLoginPw();
+        String empPwChk = signUpDto.getEmpLoginPwChk();
+
+        // email 중복 확인
+        try {
+            if (authRepository.existsById(empId))
+                return ResponseDto.setFailed("Existed Email!");
+        } catch (Exception e) {
+            return ResponseDto.setFailed("Data Base Error!");
+        }
+
+        // 비밀번호가 서로 다르면 failed response 반환!
+        if(!empPw.equals(empPwChk))
+            return ResponseDto.setFailed("password does not matched!");
+
+        // UserEntity 생성
+        EmployeeDto employeeDto = new EmployeeDto(signUpDto);
+
+        // 비밀번호 암호화
+        //String encodedPassword = passwordEncoder.encode(empPw);
+        //employeeDto.setEmpLoginPw(encodedPassword);
+
+        // UserRepository를 이용해서 데이터베이스에 Entity 저장
+        try {
+            authRepository.empInfoSave(employeeDto);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseDto.setFailed("Data Base Error!");
+        }
+
+        // 성공시 success response 반환
+        return ResponseDto.setSuccess("Signup Success!", null);
     }
 }
