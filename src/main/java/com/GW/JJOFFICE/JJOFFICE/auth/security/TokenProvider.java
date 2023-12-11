@@ -1,3 +1,4 @@
+/*
 package com.GW.JJOFFICE.JJOFFICE.auth.security;
 
 import io.jsonwebtoken.Claims;
@@ -40,4 +41,4 @@ public class TokenProvider {
         // 복호화된 토큰의 payload에서 제목을 가져옴
         return claims.getSubject();
     }
-}
+}*/

@@ -1,11 +1,14 @@
 package com.GW.JJOFFICE.JJOFFICE.auth.controller;
 
+import com.GW.JJOFFICE.JJOFFICE.auth.dto.EmployeeDto;
 import com.GW.JJOFFICE.JJOFFICE.auth.dto.ResponseDto;
 import com.GW.JJOFFICE.JJOFFICE.auth.dto.SignInDto;
 import com.GW.JJOFFICE.JJOFFICE.auth.dto.SignInResponseDto;
-import com.GW.JJOFFICE.JJOFFICE.auth.security.TokenProvider;
 import com.GW.JJOFFICE.JJOFFICE.auth.service.AuthService;
 import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,25 +24,40 @@ import java.util.Map;
 public class AuthController {
     @Autowired
     private final AuthService authService;
-    @Autowired
-    private final TokenProvider tokenProvider;
-    //@GetMapping("")
     @RequestMapping("/auth")
-    public String loginPage() {
-        return "auth/login";
+    public String loginPage(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        EmployeeDto employeeDto = (EmployeeDto) session.getAttribute("EmployeeDto");
+
+        if(employeeDto != null) {
+            return "redirect:/main";
+        } else {
+            return "auth/login";
+        }
     }
-    /*@PostMapping("/signIn")
-    public String signIn(SignInDto signInDto) {
-        System.out.println("signInDto = "+signInDto);
-        return "";
-    }*/
-    //@PostMapping("/signIn")
     @RequestMapping("/signIn")
-    public String signIn(@RequestBody SignInDto signInDto, Model model) {
+    public String signIn(@RequestBody SignInDto signInDto, Model model, HttpServletResponse response
+                        , HttpServletRequest request) {
         ResponseDto<SignInResponseDto> responseDto = authService.signIn(signInDto);
+        if(responseDto.isResult()) {
+            request.getSession().setAttribute("EmployeeDto", responseDto.getData().getEmployeeDto());
+            HttpSession session = request.getSession();
+            Cookie cookie = new Cookie("token", responseDto.getData().getToken());
+            cookie.setDomain("localhost");
+            cookie.setPath("/");
+            session.setMaxInactiveInterval(responseDto.getData().getExprTime());
+            cookie.setMaxAge(responseDto.getData().getExprTime());
+            cookie.setSecure(true);
+            response.addCookie(cookie);
+        }
         System.out.println(responseDto);
-        System.out.println(tokenProvider.validate(responseDto.getData().getToken()));
         model.addAttribute("responseDto", responseDto);
         return "jsonView";
+    }
+    @RequestMapping("/logout")
+    public String logout(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        session.invalidate();
+        return "redirect:/";
     }
 }

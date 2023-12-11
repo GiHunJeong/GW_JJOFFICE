@@ -23,7 +23,7 @@
         <aside class="control-sidebar control-sidebar-dark">
                 <!-- Control sidebar content goes here -->
                 <div><a href="/admin">관리자</a></div>
-                <div><a href="javascript:void(0);">로그아웃</a></div>
+                <div><a href="javascript:void(0);" onclick="fn_logoutAction();">로그아웃</a></div>
         </aside>
         <!-- /.control-sidebar -->
         </div>
@@ -59,3 +59,8 @@
         <script src="resources/dist/js/pages/dashboard.js"></script>
     </body>
 </html>
+<script>
+        function fn_logoutAction() {
+                location.href = '/logout';
+        }
+</script>

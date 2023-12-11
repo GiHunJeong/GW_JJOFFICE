@@ -22,7 +22,7 @@ var login = {
             console.log(rs.responseDto.data.token);
             console.log(rs.responseDto);
             alert(rs.responseDto.message);
-            //location.href = '/main';
+            location.href = '/main';
         }
     },
 }

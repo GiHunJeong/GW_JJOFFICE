@@ -5,10 +5,8 @@ import com.GW.JJOFFICE.JJOFFICE.auth.dto.ResponseDto;
 import com.GW.JJOFFICE.JJOFFICE.auth.dto.SignInDto;
 import com.GW.JJOFFICE.JJOFFICE.auth.dto.SignInResponseDto;
 import com.GW.JJOFFICE.JJOFFICE.auth.repository.AuthRepository;
-import com.GW.JJOFFICE.JJOFFICE.auth.security.TokenProvider;
 import com.GW.JJOFFICE.JJOFFICE.auth.service.AuthService;
 import lombok.RequiredArgsConstructor;
-import org.apache.el.parser.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +15,8 @@ import org.springframework.stereotype.Service;
 public class AuthServiceImpl implements AuthService {
     @Autowired
     private final AuthRepository authRepository;
-    @Autowired
-    private final TokenProvider tokenProvider;
+    /*@Autowired
+    private final TokenProvider tokenProvider;*/
 
     @Override
     public ResponseDto<SignInResponseDto> signIn(SignInDto signInDto) {
@@ -40,8 +38,8 @@ public class AuthServiceImpl implements AuthService {
 
         employeeDto.setEmpLoginPw("");
 
-        String token = tokenProvider.create(empId);
-        //String token = "testToken";
+        //String token = tokenProvider.create(empId);
+        String token = "notToken";
         int exprTime = 3600000;
 
         SignInResponseDto signInResponseDto = new SignInResponseDto(token, exprTime, employeeDto);
