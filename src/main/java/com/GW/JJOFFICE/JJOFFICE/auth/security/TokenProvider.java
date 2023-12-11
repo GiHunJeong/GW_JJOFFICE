@@ -1,4 +1,4 @@
-/*package com.GW.JJOFFICE.JJOFFICE.auth.security;
+package com.GW.JJOFFICE.JJOFFICE.auth.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -19,7 +19,7 @@ import java.util.Date;
 @Service
 public class TokenProvider {
     // JWT 생성 및 검증을 위한 키
-    private static final String SECURITY_KEY = "jwtseckey!@";
+    private static final String SECURITY_KEY = "testSecretKey20230327testSecretKey20230327testSecretKey20230327";
     // JWT 생성하는 메서드
     public String create (String empLoginId) {
         // 만료날짜를 현재 날짜 + 1시간으로 설정
@@ -40,4 +40,4 @@ public class TokenProvider {
         // 복호화된 토큰의 payload에서 제목을 가져옴
         return claims.getSubject();
     }
-}*/
+}

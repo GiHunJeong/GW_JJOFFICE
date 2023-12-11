@@ -33,13 +33,16 @@ dependencies {
 	implementation group: 'jakarta.servlet', name: 'jakarta.servlet-api', version: '6.0.0'
 	implementation group: 'org.glassfish.web', name: 'jakarta.servlet.jsp.jstl', version: '3.0.1'
 	// spring boot v3.0 jstl
-	// spring security
-	//implementation 'org.springframework.boot:spring-boot-starter-validation'
+	// spring security & jwt token
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	//implementation 'org.springframework.boot:spring-boot-starter-security'
-	//implementation 'io.jsonwebtoken:jjwt-api:0.11.2'  // API 의존성 추가
-	//runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2' // 구현 의존성 추가
-	//runtimeOnly('io.jsonwebtoken:jjwt-orgjson:0.11.2') { exclude group: 'org.json', module: 'json' } // JSON 처리 의존성 추가
-	// spring security
+	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+	// com.sun.xml.bind
+	implementation 'com.sun.xml.bind:jaxb-impl:4.0.1'
+	implementation 'com.sun.xml.bind:jaxb-core:4.0.1'
+	// javax.xml.bind
+	implementation 'javax.xml.bind:jaxb-api:2.4.0-b180830.0359'
+	// spring security & jwt token
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'

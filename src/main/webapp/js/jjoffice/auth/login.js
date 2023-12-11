@@ -16,10 +16,13 @@ var login = {
         }
         var rs = customAjax.fn_customAjax2('/signIn' ,JSON.stringify(data));
         if(!rs.responseDto.result) {
+            console.log(rs.responseDto.data.token);
             alert(rs.responseDto.message);
         }else{
+            console.log(rs.responseDto.data.token);
+            console.log(rs.responseDto);
             alert(rs.responseDto.message);
-            location.href = '/main';
+            //location.href = '/main';
         }
     },
 }

@@ -3,7 +3,9 @@ package com.GW.JJOFFICE.JJOFFICE.auth.controller;
 import com.GW.JJOFFICE.JJOFFICE.auth.dto.ResponseDto;
 import com.GW.JJOFFICE.JJOFFICE.auth.dto.SignInDto;
 import com.GW.JJOFFICE.JJOFFICE.auth.dto.SignInResponseDto;
+import com.GW.JJOFFICE.JJOFFICE.auth.security.TokenProvider;
 import com.GW.JJOFFICE.JJOFFICE.auth.service.AuthService;
+import jakarta.servlet.http.Cookie;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,8 @@ import java.util.Map;
 public class AuthController {
     @Autowired
     private final AuthService authService;
+    @Autowired
+    private final TokenProvider tokenProvider;
     //@GetMapping("")
     @RequestMapping("/auth")
     public String loginPage() {
@@ -32,10 +36,10 @@ public class AuthController {
     //@PostMapping("/signIn")
     @RequestMapping("/signIn")
     public String signIn(@RequestBody SignInDto signInDto, Model model) {
-        System.out.println(signInDto);
         ResponseDto<SignInResponseDto> responseDto = authService.signIn(signInDto);
+        System.out.println(responseDto);
+        System.out.println(tokenProvider.validate(responseDto.getData().getToken()));
         model.addAttribute("responseDto", responseDto);
-        model.addAttribute("message", responseDto.getMessage());
         return "jsonView";
     }
 }
