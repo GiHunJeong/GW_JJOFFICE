@@ -49,18 +49,39 @@
                 <li class="nav-header">TEST MENU</li>
                 <li class="nav-item">
                     <a href="javascript:void(0);" onclick="fn_openPage('menu1');" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                        <i class="nav-icon fas fa-pen"></i>
                         <p>
-                            Menu1
+                            전자결재
+                            <i class="fas fa-angle-left right"></i>
                             <span class="right badge badge-danger">New</span>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="javascript:void(0);" onclick="fn_openPage('menu2');" class="nav-link">
+                                <i class="far fa-copy nav-icon"></i>
+                                <p>기안</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="javascript:void(0);" onclick="" class="nav-link">
+                                <i class="far fa-copy nav-icon"></i>
+                                <p>발신 문서함</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="javascript:void(0);" onclick="" class="nav-link">
+                                <i class="far fa-copy nav-icon"></i>
+                                <p>수신 문서함</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="javascript:void(0);" class="nav-link">
-                        <i class="nav-icon fas fa-copy"></i>
+                        <i class="nav-icon fas fa-user"></i>
                         <p>
-                            Menu2
+                            근태관리
                             <i class="fas fa-angle-left right"></i>
                             <span class="badge badge-info right">6</span>
                         </p>
@@ -69,13 +90,25 @@
                         <li class="nav-item">
                             <a href="javascript:void(0);" onclick="fn_openPage('menu2');" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Top Menu</p>
+                                <p>일일근태등록</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="javascript:void(0);" onclick="fn_openPage('menu3');" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Bottom Menu</p>
+                                <p>근태현황</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="javascript:void(0);" onclick="fn_openPage('menu3');" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>출장신청</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="javascript:void(0);" onclick="fn_openPage('menu3');" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>휴가신청</p>
                             </a>
                         </li>
                     </ul>
