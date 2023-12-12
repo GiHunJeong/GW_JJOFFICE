@@ -2,7 +2,7 @@ var login = {
     global: {
 
     },
-    init : function() {
+    /*init : function() {
         $("#empLoginId,#empLoginPw").on('keypress', function(e) {
             if (e.keyCode == '13') {
                 login.signInAction();
@@ -24,5 +24,5 @@ var login = {
             alert(rs.responseDto.message);
             location.href = '/main';
         }
-    },
+    },*/
 }

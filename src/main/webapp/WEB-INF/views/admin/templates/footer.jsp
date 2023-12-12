@@ -23,7 +23,7 @@
         <aside class="control-sidebar control-sidebar-dark">
                 <!-- Control sidebar content goes here -->
                 <div><a href="main">사용자</a></div>
-                <div><a href="javascript:void(0);">로그아웃</a></div>
+                <div><a href="/logout">로그아웃</a></div>
         </aside>
         <!-- /.control-sidebar -->
         </div>

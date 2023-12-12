@@ -8,10 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="today" class="java.util.Date" />
 <jsp:include page="/WEB-INF/views/templates/cmm.jsp" flush="false"/>
+<input type="hidden" id="alertMsg" value="${msg}"/>
 <div id="content"></div>
 <jsp:include page="/WEB-INF/views/templates/footer.jsp" flush="false"/>
 <script>
     $(document).on('click', '#test', function() {
         alert('Home 눌름');
     });
+    if($('#alertMsg').val() != '') {
+        alert($('#alertMsg').val());
+    }
 </script>

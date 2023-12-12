@@ -17,7 +17,8 @@
             e.reg_emp_sn AS regEmpSn,
             e.mod_date AS modDate,
             e.mod_emp_sn AS modEmpSn,
-            e.del_date AS delDate
+            e.del_date AS delDate,
+            e.role AS role
         FROM
             employee AS e
         WHERE
@@ -33,7 +34,7 @@
     </select>
     <insert id="empInfoSave" parameterType="com.GW.JJOFFICE.JJOFFICE.auth.dto.EmployeeDto">
         INSERT INTO employee
-        (emp_name, emp_login_id, emp_login_pw, emp_sn, emp_phone, emp_addr, emp_addr_detail, emp_addr_zipcode, emp_photo, reg_date, reg_emp_sn)
-        VALUES (#{empName}, #{empLoginId}, #{empLoginPw}, #{empSn}, #{empPhone}, #{empAddr}, #{empAddrDetail}, #{empAddrZipcode}, #{empPhoto}, NOW(), 0)
+        (emp_name, emp_login_id, emp_login_pw, emp_sn, emp_phone, emp_addr, emp_addr_detail, emp_addr_zipcode, emp_photo, reg_date, reg_emp_sn, role)
+        VALUES (#{empName}, #{empLoginId}, #{empLoginPw}, #{empSn}, #{empPhone}, #{empAddr}, #{empAddrDetail}, #{empAddrZipcode}, #{empPhoto}, NOW(), 0, #{role})
     </insert>
 </mapper>

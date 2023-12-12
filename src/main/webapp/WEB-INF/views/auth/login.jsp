@@ -29,40 +29,41 @@
     <div class="card">
         <div class="card-body login-card-body">
             <p class="login-box-msg">Sign in to start your session</p>
-
-
-                <div class="input-group mb-3">
-                    <input id="empLoginId" name="empLoginId" type="text" class="form-control" placeholder="ID">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-envelope"></span>
+                <%-- security form --%>
+                <form method="post" action="/signIn">
+                    <div class="input-group mb-3">
+                        <input id="empLoginId" name="empLoginId" type="text" class="form-control" placeholder="ID">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="input-group mb-3">
-                    <input id="empLoginPw" name="empLoginPw" type="password" class="form-control" placeholder="Password">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
+                    <div class="input-group mb-3">
+                        <input id="empLoginPw" name="empLoginPw" type="password" class="form-control" placeholder="Password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-8">
-                        <div class="icheck-primary">
-                            <input type="checkbox" id="remember">
-                            <label for="remember">
-                                Remember Me
-                            </label>
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="icheck-primary">
+                                <input type="checkbox" id="remember">
+                                <label for="remember">
+                                    Remember Me
+                                </label>
+                            </div>
                         </div>
+                        <!-- /.col -->
+                        <div class="col-4">
+                            <%--<button onclick="login.signInAction();" class="btn btn-primary btn-block">Sign In</button>--%>
+                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                        </div>
+                        <!-- /.col -->
                     </div>
-                    <!-- /.col -->
-                    <div class="col-4">
-                        <button onclick="login.signInAction();" class="btn btn-primary btn-block">Sign In</button>
-                    </div>
-                    <!-- /.col -->
-                </div>
-
+                </form>
             <p class="mb-1">
                 <a href="#">I forgot my password</a>
             </p>
@@ -70,6 +71,7 @@
         <!-- /.login-card-body -->
     </div>
 </div>
+<input type="hidden" id="alertMsg" value="${msg}"/>
 <!-- /.login-box -->
 
 <!-- jQuery -->
@@ -80,8 +82,10 @@
 <script src="resources/dist/js/adminlte.min.js"></script>
 <script type="text/javascript" src="/js/cmm/customAjax.js"></script>
 <script type="text/javascript" src="/js/jjoffice/auth/login.js"></script>
-<script>
-    login.init();
-</script>
 </body>
 </html>
+<script>
+    if($('#alertMsg').val() != '') {
+        alert($('#alertMsg').val());
+    }
+</script>

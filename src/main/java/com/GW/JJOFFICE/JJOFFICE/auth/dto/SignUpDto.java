@@ -19,4 +19,5 @@ public class SignUpDto {
     private String empAddrZipcode;
     private String empPhoto;
     private String regEmpSn;
+    private String role;
 }

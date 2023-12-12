@@ -22,7 +22,9 @@
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
                 <!-- Control sidebar content goes here -->
-                <div><a href="/admin">관리자</a></div>
+                <c:if test="${empInfo.role eq 'ROLE_Admin'}">
+                        <div><a href="/admin">관리자</a></div>
+                </c:if>
                 <div><a href="javascript:void(0);" onclick="footer.fn_logoutAction();">로그아웃</a></div>
         </aside>
         <!-- /.control-sidebar -->

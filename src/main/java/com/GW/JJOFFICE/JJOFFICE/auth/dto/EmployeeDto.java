@@ -24,6 +24,7 @@ public class EmployeeDto {
     private String modDate;
     private String modEmpSn;
     private String delDate;
+    private String role; // 권한
     public EmployeeDto(SignUpDto signUpDto) {
         this.empName = signUpDto.getEmpName();
         this.empLoginId = signUpDto.getEmpLoginId();
@@ -36,5 +37,6 @@ public class EmployeeDto {
         this.empAddrZipcode = signUpDto.getEmpAddrZipcode();
         this.empPhoto = signUpDto.getEmpPhoto();
         this.regEmpSn = signUpDto.getRegEmpSn();
+        this.role = signUpDto.getRole();
     }
 }
