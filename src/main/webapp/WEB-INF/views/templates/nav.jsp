@@ -7,6 +7,25 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<style>
+.date{
+   text-align: center;
+}
+.time{
+	text-align: center;
+    font-weight: bold;
+    font-size: x-large;
+}
+.row.check{
+	margin: 0 10px;
+	justify-content: space-between;
+}
+.work-btn{
+	justify-content: space-around;
+}
+</style>
+
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -45,7 +64,6 @@
                 </form>
             </div>
         </li>
-
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
@@ -104,29 +122,31 @@
                 <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
             </div>
         </li>
-        <!-- Notifications Dropdown Menu -->
+        <!-- Navbar Work time check -->
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
-                <i class="far fa-bell"></i>
-                <span class="badge badge-warning navbar-badge">15</span>
+                <i class="far fa-user"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <span class="dropdown-item dropdown-header">15 Notifications</span>
+                <span class="dropdown-item dropdown-header">근태 등록</span>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <i class="fas fa-envelope mr-2"></i> 4 new messages
-                    <span class="float-right text-muted text-sm">3 mins</span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <i class="fas fa-users mr-2"></i> 8 friend requests
-                    <span class="float-right text-muted text-sm">12 hours</span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <i class="fas fa-file mr-2"></i> 3 new reports
-                    <span class="float-right text-muted text-sm">2 days</span>
-                </a>
+                	<div id="date" class="date text-muted"></div>
+                	<div id="time" class="time"></div>
+                
+                	<div class="row check">
+                		<span>출근시간</span>
+                		<span class="text-muted">08:50:11</span>
+                	</div>
+                	<div class="row check">
+                		<span>퇴근시간</span>
+                		<span class="text-muted">-</span>
+                	</div>
+                
+                	<div class="row work-btn">
+                		<button type="button" class="btn btn-secondary" style="width: 40%;">출근</button>
+                		<button type="button" class="btn btn-secondary" style="width: 40%;">퇴근</button>
+                	</div>
+                	
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
             </div>
@@ -144,3 +164,29 @@
     </ul>
 </nav>
 <!-- /.navbar -->
+
+<script>
+// 시계
+function setClock(){
+    var dateInfo = new Date(); 
+    var hour = modifyNumber(dateInfo.getHours());
+    var min = modifyNumber(dateInfo.getMinutes());
+    var sec = modifyNumber(dateInfo.getSeconds());
+    var year = dateInfo.getFullYear();
+    var month = dateInfo.getMonth()+1; //monthIndex를 반환해주기 때문에 1을 더해준다.
+    var date = dateInfo.getDate();
+    document.getElementById("time").innerHTML = hour + ":" + min  + ":" + sec;
+    document.getElementById("date").innerHTML = year + "년 " + month + "월 " + date + "일";
+}
+function modifyNumber(time){
+    if(parseInt(time)<10){
+        return "0"+ time;
+    }
+    else
+        return time;
+}
+window.onload = function(){
+    setClock();
+    setInterval(setClock,1000); //1초마다 setClock 함수 실행
+}
+</script>
