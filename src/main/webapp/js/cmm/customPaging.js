@@ -7,7 +7,7 @@ var customPaging = {
         contentId: '',
         pagingId: ''
     },
-    init : function(viewCnt, totalCnt, contentUrl, contentId, pagingId) { // 한 화면에 표시될 컨텐츠수, 전체 컨텐츠의 갯수, 컨텐츠가 표시될 위치 ID값, 페이징이 표시될 위치 ID값
+    init : function(viewCnt, totalCnt, contentUrl, contentId, pagingId) { // 한 화면에 표시될 컨텐츠수, 전체 컨텐츠의 갯수, 한 화면에 보여줄 컨텐츠를 조회하는 ajax url, 컨텐츠가 표시될 위치 ID값, 페이징이 표시될 위치 ID값
         // 페이징 번호 선택 css
         $(document).on('click', '.pageNum', function(){
             $('.pageNum Active').attr('class', 'pageNum');
@@ -39,7 +39,7 @@ var customPaging = {
                 `<li><a href="javascript:void(0)" class="prevAndNext" id="prev" onclick="customPaging.fn_prevAndNextClickAction($(this).attr('id'),`+pageNum+`)"><&nbsp&nbsp</a></li>`;
         }
         // 페이지 넘버
-        for(let i = page; i <= page+10; i++) {
+        for(let i = page; i < page+10; i++) {
             if(i > pageGroup) break;
             pageHtml +=
                 `<li><a href="javascript:void(0)" class="pageNum" onclick="customPaging.fn_pageClickAction(`+i+`);">&nbsp`+i+`&nbsp</a></li>`;
