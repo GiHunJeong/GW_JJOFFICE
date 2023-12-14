@@ -16,12 +16,17 @@ public class DocumentServiceImpl implements DocumentService {
     private final DocumentRepository documentRepository;
 
     @Override
-    public int getDocBoxTotal() {
-        return documentRepository.getDocBoxTotal();
+    public int getDocBoxTotal(Map<String, Object> map) {
+        return documentRepository.getDocBoxTotal(map);
     }
 
     @Override
     public List<Map<String, Object>> getDocBoxList(Map<String, Object> map) {
         return documentRepository.getDocBoxList(map);
+    }
+
+    @Override
+    public Map<String, Object> getDocInfoOne(String docSn) {
+        return documentRepository.getDocInfoOne(docSn);
     }
 }

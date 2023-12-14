@@ -17,7 +17,7 @@
           <h5 class="card-title m-0">결재라인</h5>
         </div>
         <div class="card-body">
-          문서내용
+          ${rs.content}
         </div>
       </div>
     </div>

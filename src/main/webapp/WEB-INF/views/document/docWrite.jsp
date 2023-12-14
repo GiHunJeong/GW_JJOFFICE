@@ -23,31 +23,60 @@
   </div><!-- /.container-fluid -->
 </div>
 <!-- /.content-header -->
-<div>
-  <div class="card">
-    <div class="card-header">
-      <h5 class="card-title m-0">문서양식</h5>
-    </div>
-    <div class="card-body">
-      <table>
-        <table id="docBoxList">
 
-        </table>
-        <div>
-          <ul id="paging" class="pagination justify-content-center">
-
-          </ul>
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title" style="margin-top: 10px;">문서양식</h3>
+    <%-- 검색bar --%>
+    <div class="form-inline justify-content-end">
+      <div class="input-group">
+        <input id="searchKeyword" class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button id="searchBtn" class="btn btn-sidebar" style="background-color: #007bff;">
+            <i class="fas fa-search fa-fw"></i>
+          </button>
         </div>
-      </table>
+      </div>
     </div>
+    <%-- 검색bar --%>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th style="width: 10%">DocNo</th>
+        <th style="width: 60%">양식명</th>
+        <th style="width: 20%">생성일</th>
+        <th style="width: 10%"></th>
+      </tr>
+      </thead>
+      <tbody id="docBoxList">
+
+      </tbody>
+    </table>
+  </div>
+  <!-- /.card-body -->
+  <div class="card-footer clearfix">
+    <ul id="paging" class="pagination pagination-sm m-0 justify-content-center">
+
+    </ul>
   </div>
 </div>
 <script>
-  function docWritePopAction(docName) {
-    var url = '/docWritePop?doc='+docName;
+  $(document).on('click', '.customPaging-a', function(){
+    var doc_sn = $(this).parent().prev().text();
+    var url = '/docWritePop?doc='+doc_sn;
     var name = '문서작성';
     var option = 'location=no,width=800,height=600,top=0,left=0';
     window.open(url, name, option);
-  }
-  customPaging.init(1, ${totalCount}, '/ajax/getDocBoxList', 'docBoxList', 'paging');
+  })
+  customPaging.init(5, ${totalCount}, '/ajax/getDocBoxList', 'docBoxList', 'paging',4 ,'1:doc_sn,2:doc_name:a,3:doc_reg_date,4:[button]:작성');
+  $('#searchBtn').on('click', function() {
+    var data = {
+      searchKeyword: $('#searchKeyword').val(),
+    }
+    var resultTotalCnt = customAjax.fn_customAjax('/ajax/getDocBoxTotal', data);
+    customPaging.init(5, resultTotalCnt.totalCount, '/ajax/getDocBoxList', 'docBoxList', 'paging',4 ,'1:doc_sn,2:doc_name:a,3:doc_reg_date,4:[button]:작성');
+  });
 </script>

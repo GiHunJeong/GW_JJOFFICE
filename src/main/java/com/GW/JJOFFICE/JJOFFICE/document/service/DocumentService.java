@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface DocumentService {
-    int getDocBoxTotal();
+    int getDocBoxTotal(Map<String, Object> map);
     List<Map<String, Object>> getDocBoxList(Map<String, Object> map);
+    Map<String, Object> getDocInfoOne(String docSn);
 }

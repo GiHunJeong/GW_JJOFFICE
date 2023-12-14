@@ -23,7 +23,7 @@ public class DocumentContorller {
      */
     @RequestMapping(value = "/docWrite", method = RequestMethod.GET)
     public String docWrite(Model model) {
-        model.addAttribute("totalCount", documentService.getDocBoxTotal());
+        model.addAttribute("totalCount", documentService.getDocBoxTotal(new HashMap<>()));
         return "document/docWrite";
     }
     @RequestMapping(value = "/ajax/getDocBoxList", method = RequestMethod.POST)
@@ -32,8 +32,8 @@ public class DocumentContorller {
         return "jsonView";
     }
     @RequestMapping(value = "/ajax/getDocBoxTotal", method = RequestMethod.POST)
-    public String ajax_getDocBoxList(Model model) {
-        model.addAttribute("totalCount", documentService.getDocBoxTotal());
+    public String ajax_getDocBoxTotal(@RequestParam Map<String, Object> map, Model model) {
+        model.addAttribute("totalCount", documentService.getDocBoxTotal(map));
         return "jsonView";
     }
     /**
@@ -41,8 +41,8 @@ public class DocumentContorller {
      * @return
      */
     @RequestMapping(value = "/docWritePop", method = RequestMethod.GET)
-    public String docWritePop(String doc) {
-        System.out.println("doc = "+doc);
+    public String docWritePop(String doc, Model model) {
+        model.addAttribute("rs", documentService.getDocInfoOne(doc));
         return "document/docWritePop";
     }
     /**
