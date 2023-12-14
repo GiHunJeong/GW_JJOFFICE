@@ -5,9 +5,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.Collection;
-public class CustomUserDetail implements UserDetails {
+public class CustomUserDetails implements UserDetails {
     private EmployeeDto employeeDto;
-    public CustomUserDetail(EmployeeDto employeeDto) {
+    public CustomUserDetails(EmployeeDto employeeDto) {
         this.employeeDto = employeeDto;
     }
     @Override

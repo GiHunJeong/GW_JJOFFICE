@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.GW.JJOFFICE.JJOFFICE.document.repository.DocumentRepository">
+    <select id="getDocBoxTotal" resultType="int">
+        SELECT
+            COUNT(*)
+        FROM
+            document_box AS d;
+    </select>
+    <select id="getDocBoxList" parameterType="map" resultType="map">
+        SELECT
+            d.*
+        FROM
+            document_box AS d
+            LIMIT ${start}, ${last};
+    </select>
+</mapper>

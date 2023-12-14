@@ -26,6 +26,7 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
         String empLoginId = authentication.getName(); // 로그인 아이디
 
         EmployeeDto employeeDto = authRepository.findByEmpId(empLoginId); // 해당 아이디 이용자 정보
+        employeeDto.setEmpLoginPw("");
 
         request.getSession().setAttribute("msg", employeeDto.getEmpName()+" 님 로그인 하셨습니다.");
         request.getSession().setAttribute("EmployeeDto", employeeDto);

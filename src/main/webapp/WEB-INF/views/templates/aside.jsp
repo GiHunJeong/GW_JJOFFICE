@@ -48,7 +48,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-header">TEST MENU</li>
                 <li class="nav-item">
-                    <a href="javascript:void(0);" onclick="fn_openPage('menu1');" class="nav-link">
+                    <a href="javascript:void(0);"  class="nav-link">
                         <i class="nav-icon fas fa-pen"></i>
                         <p>
                             전자결재
@@ -58,19 +58,19 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="javascript:void(0);" onclick="fn_openPage('menu2');" class="nav-link">
+                            <a href="javascript:void(0);" onclick="fn_openPage('docWrite');" class="nav-link">
                                 <i class="far fa-copy nav-icon"></i>
                                 <p>기안</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="javascript:void(0);" onclick="" class="nav-link">
+                            <a href="javascript:void(0);" onclick="fn_openPage('sentDocBox');" class="nav-link">
                                 <i class="far fa-copy nav-icon"></i>
                                 <p>발신 문서함</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="javascript:void(0);" onclick="" class="nav-link">
+                            <a href="javascript:void(0);" onclick="fn_openPage('receiveDocBox');" class="nav-link">
                                 <i class="far fa-copy nav-icon"></i>
                                 <p>수신 문서함</p>
                             </a>
@@ -88,25 +88,25 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="javascript:void(0);" onclick="fn_openPage('menu2');" class="nav-link">
+                            <a href="javascript:void(0);" onclick="fn_openPage('menu1');" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>일일근태등록</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="javascript:void(0);" onclick="fn_openPage('menu3');" class="nav-link">
+                            <a href="javascript:void(0);" onclick="fn_openPage('menu2');" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>근태현황</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="javascript:void(0);" onclick="fn_openPage('menu3');" class="nav-link">
+                            <a href="javascript:void(0);" onclick="fn_openPage('menu1');" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>출장신청</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="javascript:void(0);" onclick="fn_openPage('menu3');" class="nav-link">
+                            <a href="javascript:void(0);" onclick="fn_openPage('menu2');" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>휴가신청</p>
                             </a>
