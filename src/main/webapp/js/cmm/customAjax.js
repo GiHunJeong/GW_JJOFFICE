@@ -21,7 +21,7 @@ var customAjax = {
                 result.flag = true;
             },
             error :function (e) {
-                result.flag = false;
+                result = false;
                 console.log('error : ', e);
             }
         });
@@ -48,7 +48,7 @@ var customAjax = {
                 result.flag = true;
             },
             error :function (e) {
-                result.flag = false;
+                result = false;
                 console.log('error : ', e);
             }
         });
@@ -71,7 +71,7 @@ var customAjax = {
                 result.flag = true;
             },
             error :function (e) {
-                result.flag = false;
+                result = false;
                 console.log('error : ', e);
             }
         });

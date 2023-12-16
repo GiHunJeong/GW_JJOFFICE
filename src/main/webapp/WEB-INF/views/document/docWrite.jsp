@@ -76,12 +76,12 @@
       searchAction();
     }
   });
-  customPaging.init(5, ${totalCount}, '/ajax/getDocBoxList', 'docBoxList', 'paging',4 ,'1:doc_sn,2:doc_name:a,3:doc_reg_date,4:[button]:작성');
+  customPaging.init(10, ${totalCount}, '/ajax/getDocBoxList', 'docBoxList', 'paging',4 ,'1:doc_sn,2:doc_name:a,3:doc_reg_date,4:[button]:작성');
   function searchAction() {
     var data = {
       searchKeyword: $('#searchKeyword').val(),
     }
     var resultTotalCnt = customAjax.fn_customAjax('/ajax/getDocBoxTotal', data);
-    customPaging.init(5, resultTotalCnt.totalCount, '/ajax/getDocBoxList', 'docBoxList', 'paging',4 ,'1:doc_sn,2:doc_name:a,3:doc_reg_date,4:[button]:작성');
+    customPaging.init(10, resultTotalCnt.totalCount, '/ajax/getDocBoxList', 'docBoxList', 'paging',4 ,'1:doc_sn,2:doc_name:a,3:doc_reg_date,4:[button]:작성');
   }
 </script>

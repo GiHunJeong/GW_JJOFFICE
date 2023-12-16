@@ -30,8 +30,6 @@
     <link rel="stylesheet" href="resources/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="resources/plugins/daterangepicker/daterangepicker.css">
-    <!-- summernote -->
-    <link rel="stylesheet" href="resources/plugins/summernote/summernote-bs4.min.css">
 </head>
 <script type="text/javascript" src="/js/cmm/customAjax.js"></script>
 <script type="text/javascript" src="/js/cmm/customPaging.js"></script>
