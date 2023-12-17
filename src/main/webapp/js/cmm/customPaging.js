@@ -7,7 +7,7 @@ var customPaging = {
         contentId: '',
         pagingId: '',
         contentColInfo: '',
-        contentInRowCnt:''
+        contentInColCnt:''
     },
     /**
      * customPasing
@@ -16,15 +16,15 @@ var customPaging = {
      * @param contentUrl 한 화면에 보여줄 컨텐츠를 조회하는 ajax url ex) 'ajax/url'
      * @param contentId 컨텐츠가 표시될 위치 ID값 ex) 'contentId'
      * @param pagingId 페이징이 표시될 위치 ID값 ex) 'pagingId'
-     * @param contentInRowCnt 데이터 로우의 갯수 ex | 로우1 | 로우2 | 로우3 | 로우4 | -> row = 4
+     * @param contentInColCnt 데이터 컬럼의 갯수 ex | col1 | col2 | col3 | col4 | -> col = 4
      * @param contentColInfo 테이블에서 사용할 순번과 컬럼 ex) 1:컬럼네임1,3:컬럼네임2,5:컬럼네임3 ->
-     *                                                1번 로우에 컬럼네임1 자료들표기,
-     *                                                3번 로우에 컬럼네임2 자료들표기,
-     *                                                5번 로우에 컬럼네임3 자료들표기
+     *                                                1번 컬럼에 컬럼네임1 자료들표기,
+     *                                                3번 컬럼에 컬럼네임2 자료들표기,
+     *                                                5번 컬럼에 컬럼네임3 자료들표기
      *                                                a태그 사용 1:컬럼네임:a, 클래스명: customPaging-a
      *                                                button 사용 4:[button]:버튼네임, 클래스명: customPaging-btn
      */
-    init : function(contentViewCnt, contentTotalCnt, contentUrl, contentId, pagingId, contentInRowCnt, contentColInfo) {
+    init : function(contentViewCnt, contentTotalCnt, contentUrl, contentId, pagingId, contentInColCnt, contentColInfo) {
         // 페이징 번호 선택 css
         $(document).on('click', '.pageNum', function(){
             $('.pageNum Active').attr('class', 'page-link pageNum');
@@ -37,7 +37,7 @@ var customPaging = {
         customPaging.global.contentUrl = contentUrl;
         customPaging.global.contentId = contentId;
         customPaging.global.pagingId = pagingId;
-        customPaging.global.contentInRowCnt = contentInRowCnt;
+        customPaging.global.contentInColCnt = contentInColCnt;
         customPaging.global.contentColInfo = contentColInfo;
         customPaging.fn_paging(1);
     },
@@ -105,7 +105,7 @@ var customPaging = {
             let pageHtml = '';
             let data = customPaging.global.contentColInfo;
             let dataArr = data.split(",");
-            for(let i = 0; i < customPaging.global.contentInRowCnt; i ++) {
+            for(let i = 0; i < customPaging.global.contentInColCnt; i ++) {
                 html += '<td>'+(i+1)+'!C!O!L!U!M!N!</td>';
             }
             html = tr.replace('!!trTag!!', html);
@@ -131,7 +131,7 @@ var customPaging = {
             $('#'+customPaging.global.contentId).html(pageHtml);
         }else{
             let failedPageHtml = '';
-            failedPageHtml = `<tr><td colspan="`+customPaging.global.contentInRowCnt+`" style="text-align: center;">No Data Result Found.</td></tr>`;
+            failedPageHtml = `<tr><td colspan="`+customPaging.global.contentInColCnt+`" style="text-align: center;">No Data Result Found.</td></tr>`;
             $('#'+customPaging.global.contentId).html(failedPageHtml);
             $('#'+customPaging.global.pagingId).empty();
         }
