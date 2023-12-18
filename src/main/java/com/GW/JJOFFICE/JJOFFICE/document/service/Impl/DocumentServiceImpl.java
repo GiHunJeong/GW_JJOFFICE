@@ -47,4 +47,9 @@ public class DocumentServiceImpl implements DocumentService {
     public List<Map<String, Object>> getDocList(Map<String, Object> map) {
         return documentRepository.getDocList(map);
     }
+
+    @Override
+    public Map<String, Object> getDocumentInfoOne(String docSn) {
+        return documentRepository.getDocumentInfoOne(docSn);
+    }
 }

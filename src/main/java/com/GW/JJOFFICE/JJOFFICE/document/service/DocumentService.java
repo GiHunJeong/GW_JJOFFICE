@@ -10,4 +10,5 @@ public interface DocumentService {
     String setDocumentInfo(Map<String, Object> map);
     int getDocListTotal (Map<String, Object> map);
     List<Map<String, Object>> getDocList(Map<String, Object> map);
+    Map<String, Object> getDocumentInfoOne(String docSn);
 }

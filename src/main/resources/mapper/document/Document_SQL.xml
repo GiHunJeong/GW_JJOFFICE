@@ -65,4 +65,12 @@
         </if>
         LIMIT ${start}, ${last}
     </select>
+    <select id="getDocumentInfoOne" parameterType="string" resultType="map">
+        select
+            d.*
+        from
+            document as d
+        where
+            d.doc_sn = #{doc}
+    </select>
 </mapper>

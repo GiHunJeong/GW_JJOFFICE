@@ -62,7 +62,7 @@
         <th style="width: 10%">기안일</th>
       </tr>
       </thead>
-      <tbody id="docBoxList">
+      <tbody id="sentDocBoxList">
 
       </tbody>
     </table>

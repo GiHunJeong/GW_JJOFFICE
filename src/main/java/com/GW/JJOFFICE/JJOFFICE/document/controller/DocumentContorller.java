@@ -73,6 +73,11 @@ public class DocumentContorller {
         model.addAttribute("totalCount", documentService.getDocListTotal(map));
         return "jsonView";
     }
+    @RequestMapping(value = "/sentDocReadPop", method = RequestMethod.GET)
+    public String sentDocReadPop(@RequestParam String doc, Model model) {
+        model.addAttribute("rs", documentService.getDocumentInfoOne(doc));
+        return "document/sentDocReadPop";
+    }
     /**
      * 사용자 수신 문서함
      * @return
