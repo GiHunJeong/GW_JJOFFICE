@@ -24,7 +24,6 @@ var customPaging = {
      *                                                a태그 사용 1:컬럼네임:a, 클래스명: customPaging-a
      *                                                button 사용 4:[button]:버튼네임, 클래스명: customPaging-btn
      */
-    //init : function(contentViewCnt, contentTotalCnt, contentUrl, contentId, pagingId, contentInColCnt, contentColInfo) {
     init : function(contentViewCnt, contentTotalCnt, contentUrl, contentId, pagingId, contentInColCnt, contentColInfo) {
         // 페이징 번호 선택 css
         $(document).on('click', '.pageNum', function(){
