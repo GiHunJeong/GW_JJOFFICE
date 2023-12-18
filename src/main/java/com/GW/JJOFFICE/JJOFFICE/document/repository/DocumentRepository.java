@@ -12,4 +12,7 @@ public interface DocumentRepository {
     int getDocBoxTotal(Map<String, Object> map);
     List<Map<String, Object>> getDocBoxList(Map<String, Object> map);
     Map<String, Object> getDocInfoOne(String docSn);
+    void setDocumentInfo(Map<String, Object> map);
+    int getDocListTotal (Map<String, Object> map);
+    List<Map<String, Object>> getDocList(Map<String, Object> map);
 }

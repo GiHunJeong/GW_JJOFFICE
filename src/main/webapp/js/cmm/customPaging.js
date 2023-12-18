@@ -24,6 +24,7 @@ var customPaging = {
      *                                                a태그 사용 1:컬럼네임:a, 클래스명: customPaging-a
      *                                                button 사용 4:[button]:버튼네임, 클래스명: customPaging-btn
      */
+    //init : function(contentViewCnt, contentTotalCnt, contentUrl, contentId, pagingId, contentInColCnt, contentColInfo) {
     init : function(contentViewCnt, contentTotalCnt, contentUrl, contentId, pagingId, contentInColCnt, contentColInfo) {
         // 페이징 번호 선택 css
         $(document).on('click', '.pageNum', function(){
@@ -91,10 +92,15 @@ var customPaging = {
     // 페이징 데이터
     fn_pagingData : function(page) {
         $('#'+customPaging.global.contentId).children().empty();
+        let searchCol = '';
+        if($('#searchCol option:checked').val() != 'default') {
+            searchCol = $('#searchCol').val();
+        }
         let data = {
             start: ((page-1)*customPaging.global.contentViewCnt),
             last: customPaging.global.contentViewCnt,
             searchKeyword: $('#searchKeyword').val(),
+            searchCol: searchCol,
         }
         var result = customAjax.fn_customAjax(customPaging.global.contentUrl, data);
         if(result.flag && result.rs.length != 0) {

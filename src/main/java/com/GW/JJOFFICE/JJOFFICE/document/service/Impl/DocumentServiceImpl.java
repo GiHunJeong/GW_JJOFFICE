@@ -29,4 +29,22 @@ public class DocumentServiceImpl implements DocumentService {
     public Map<String, Object> getDocInfoOne(String docSn) {
         return documentRepository.getDocInfoOne(docSn);
     }
+    @Override
+    public String setDocumentInfo(Map<String, Object> map) {
+        String result = "setDocumentInfo Success";
+        try {
+            documentRepository.setDocumentInfo(map);
+        } catch (Exception e) {
+            result = "setDocumentInfo Failed, Reason -> "+e.getStackTrace();
+        }
+        return result;
+    }
+    @Override
+    public int getDocListTotal(Map<String, Object> map) {
+        return documentRepository.getDocListTotal(map);
+    }
+    @Override
+    public List<Map<String, Object>> getDocList(Map<String, Object> map) {
+        return documentRepository.getDocList(map);
+    }
 }

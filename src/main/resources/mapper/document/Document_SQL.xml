@@ -34,4 +34,35 @@
         where
             d.doc_sn = #{docSn}
     </select>
+    <select id="setDocumentInfo" parameterType="map" resultType="map">
+        INSERT INTO document
+        (doc_title, doc_drafter_emp_sn, doc_drafter_emp_name, doc_content, reg_date, reg_emp_sn, use_yn)
+        VALUES
+        ('test', #{docDrafterEmpSn}, #{docDrafterEmpName}, #{docContent}, NOW(), #{regEmpSn}, 'Y')
+    </select>
+    <select id="getDocListTotal" parameterType="map" resultType="int">
+        SELECT
+        COUNT(*)
+        FROM
+        document AS d
+        where
+        d.doc_drafter_emp_sn = #{docDrafterEmpSn}
+        <if test='searchKeyword != null and !"".equals(searchKeyword)'>
+            and
+            d.${searchCol} like concat('%', #{searchKeyword}, '%')
+        </if>
+    </select>
+    <select id="getDocList" parameterType="map" resultType="map">
+        SELECT
+        d.*
+        FROM
+        document AS d
+        where
+        d.doc_drafter_emp_sn = #{docDrafterEmpSn}
+        <if test='searchKeyword != null and !"".equals(searchKeyword)'>
+            and
+            d.${searchCol} like concat('%', #{searchKeyword}, '%')
+        </if>
+        LIMIT ${start}, ${last}
+    </select>
 </mapper>

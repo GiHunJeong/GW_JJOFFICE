@@ -1,6 +1,9 @@
 package com.GW.JJOFFICE.JJOFFICE.document.controller;
 
+import com.GW.JJOFFICE.JJOFFICE.auth.dto.EmployeeDto;
 import com.GW.JJOFFICE.JJOFFICE.document.service.DocumentService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,8 +25,7 @@ public class DocumentContorller {
      * @return
      */
     @RequestMapping(value = "/docWrite", method = RequestMethod.GET)
-    public String docWrite(Model model) {
-        model.addAttribute("totalCount", documentService.getDocBoxTotal(new HashMap<>()));
+    public String docWrite() {
         return "document/docWrite";
     }
     @RequestMapping(value = "/ajax/getDocBoxList", method = RequestMethod.POST)
@@ -53,6 +55,24 @@ public class DocumentContorller {
     public String sentDocBox() {
         return "document/sentDocBox";
     }
+    @RequestMapping(value = "/ajax/getDocList", method = RequestMethod.POST)
+    public String ajax_getDocList(@RequestParam Map<String, Object> map, Model model, HttpServletRequest request) {
+        System.out.println(map);
+        HttpSession session = request.getSession();
+        EmployeeDto employeeDto = (EmployeeDto) session.getAttribute("EmployeeDto");
+        map.put("docDrafterEmpSn", employeeDto.getEmpSn());
+        model.addAttribute("rs", documentService.getDocList(map));
+        return "jsonView";
+    }
+    @RequestMapping(value = "/ajax/getDocListTotal", method = RequestMethod.POST)
+    public String ajax_getDocListTotal(@RequestParam Map<String, Object> map, Model model, HttpServletRequest request) {
+        System.out.println(map);
+        HttpSession session = request.getSession();
+        EmployeeDto employeeDto = (EmployeeDto) session.getAttribute("EmployeeDto");
+        map.put("docDrafterEmpSn", employeeDto.getEmpSn());
+        model.addAttribute("totalCount", documentService.getDocListTotal(map));
+        return "jsonView";
+    }
     /**
      * 사용자 수신 문서함
      * @return
@@ -60,5 +80,25 @@ public class DocumentContorller {
     @RequestMapping(value = "/receiveDocBox", method = RequestMethod.GET)
     public String receiveDocBox() {
         return "document/receiveDocBox";
+    }
+    /**
+     * 문서작성
+     * @param map
+     * @param model
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/ajax/setDocumentInfo", method = RequestMethod.POST)
+    public String setDocumentInfo(@RequestParam Map<String, Object> map, Model model, HttpServletRequest request) {
+        Map<String, Object> addMap = new HashMap<>();
+        HttpSession session = request.getSession();
+        EmployeeDto employeeDto = (EmployeeDto) session.getAttribute("EmployeeDto");
+        addMap.put("docDrafterEmpSn", employeeDto.getEmpSn());
+        addMap.put("docDrafterEmpName", employeeDto.getEmpName());
+        addMap.put("regEmpSn", employeeDto.getEmpSn());
+        map.putAll(addMap);
+        String result = documentService.setDocumentInfo(map);
+        model.addAttribute("rs", result);
+        return "jsonView";
     }
 }

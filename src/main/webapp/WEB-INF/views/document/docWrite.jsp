@@ -32,7 +32,7 @@
       <div class="input-group">
         <input id="searchKeyword" class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
         <div class="input-group-append">
-          <button id="searchBtn" class="btn btn-sidebar" onclick="searchAction();" style="background-color: #007bff;">
+          <button id="searchBtn" class="btn btn-sidebar" onclick="docWrite.searchAction();" style="background-color: #007bff;">
             <i class="fas fa-search fa-fw"></i>
           </button>
         </div>
@@ -63,25 +63,7 @@
     </ul>
   </div>
 </div>
+<script type="text/javascript" src="/js/jjoffice/document/docWrite.js"></script>
 <script>
-  $(document).on('click', '.customPaging-a', function(){
-    var doc_sn = $(this).parent().prev().text();
-    var url = '/docWritePop?doc='+doc_sn;
-    var name = '문서작성';
-    var option = 'location=no,width=800,height=600,top=0,left=0';
-    window.open(url, name, option);
-  })
-  $("#searchKeyword").on('keypress', function(e) {
-    if (e.keyCode == '13') {
-      searchAction();
-    }
-  });
-  customPaging.init(10, ${totalCount}, '/ajax/getDocBoxList', 'docBoxList', 'paging',4 ,'1:doc_sn,2:doc_name:a,3:doc_reg_date,4:[button]:작성');
-  function searchAction() {
-    var data = {
-      searchKeyword: $('#searchKeyword').val(),
-    }
-    var resultTotalCnt = customAjax.fn_customAjax('/ajax/getDocBoxTotal', data);
-    customPaging.init(10, resultTotalCnt.totalCount, '/ajax/getDocBoxList', 'docBoxList', 'paging',4 ,'1:doc_sn,2:doc_name:a,3:doc_reg_date,4:[button]:작성');
-  }
+  docWrite.init();
 </script>
