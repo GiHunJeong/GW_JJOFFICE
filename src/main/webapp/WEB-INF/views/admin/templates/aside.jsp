@@ -80,6 +80,14 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="javascript:void(0);" onclick="fn_openPage('boardSetting');" class="nav-link">
+                        <i class="nav-icon fas fa-folder"></i>
+                        <p>
+                            게시판 관리
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

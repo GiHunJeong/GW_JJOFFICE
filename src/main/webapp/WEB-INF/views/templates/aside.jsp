@@ -45,7 +45,7 @@
         <!-- Sidebar Menu -->
         <!-- 메뉴 -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar nav-child-indent flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-header">TEST MENU</li>
                 <li class="nav-item">
                     <a href="javascript:void(0);"  class="nav-link">
@@ -113,6 +113,20 @@
                         </li>
                     </ul>
                 </li>
+                <%-- 게시판 트리뷰 --%>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-folder"></i>
+                        <p>
+                            게시판
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul id="menu" class="nav nav-treeview" style="display: none;">
+
+                    </ul>
+                </li>
+                <%-- 게시판 트리뷰 --%>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -122,5 +136,41 @@
 <script>
     function fn_openPage(menuName) {
         $('#content').load(menuName);
+    }
+    menu();
+    function menu() {
+        let menuList = customAjax.fn_customAjax('/ajax/boardSetting/menuList');
+        $.each(menuList.rs, function(i, x) {
+            let menu = '';
+            if(x.board_folder_dept == '0') {
+                if(x.board_folder_child_yn == 'N') {
+                    menu = `<li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+ `</p></a>`;
+                }else {
+                    menu = `<li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+`<i class="right fas fa-angle-left"></i></p></a><ul menu="`+x.board_folder_sn+`" class="nav nav-treeview" style="display: none;"></ul>`;
+                }
+                $('#menu').append(menu);
+            }else if(x.board_folder_dept == '1') {
+                if(x.board_folder_child_yn == 'N') {
+                    menu = `<li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+ `</p></a>`;
+                }else {
+                    menu = `<li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+`<i class="right fas fa-angle-left"></i></p></a><ul menu="`+x.board_folder_sn+`" class="nav nav-treeview" style="display: none;"></ul>`;
+                }
+                $("ul[menu='"+x.board_folder_upper_sn+"']").append(menu);
+            }else if(x.board_folder_dept == '2') {
+                if(x.board_folder_child_yn == 'N') {
+                    menu = `<li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+ `</p></a>`;
+                }else {
+                    menu = `<li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+`<i class="right fas fa-angle-left"></i></p></a><ul menu="`+x.board_folder_sn+`" class="nav nav-treeview" style="display: none;"></ul>`;
+                }
+                $("ul[menu='"+x.board_folder_upper_sn+"']").append(menu);
+            }else if(x.board_folder_dept == '3') {
+                if(x.board_folder_child_yn == 'N') {
+                    menu = `<li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+ `</p></a>`;
+                }else {
+                    menu = `<li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+`<i class="right fas fa-angle-left"></i></p></a><ul menu="`+x.board_folder_sn+`" class="nav nav-treeview" style="display: none;"></ul>`;
+                }
+                $("ul[menu='"+x.board_folder_upper_sn+"']").append(menu);
+            }
+        })
     }
 </script>

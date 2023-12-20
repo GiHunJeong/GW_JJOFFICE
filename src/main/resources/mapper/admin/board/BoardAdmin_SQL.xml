@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.GW.JJOFFICE.JJOFFICE.admin.board.repository.BoardAdminRepository">
+    <select id="getBoardFolderList" resultType="map">
+        select
+            bf.*
+        from
+            board_folder as bf
+    </select>
+    <select id="getBoardFolderInfo" resultType="map" parameterType="string">
+        select
+            bf.*
+        from
+            board_folder as bf
+        where
+            bf.board_folder_sn = #{boardFolderSn}
+    </select>
+    <insert id="setBoardFolderOne" parameterType="map">
+        INSERT INTO board_folder
+        (board_folder_dept, board_folder_name, board_folder_upper_sn, board_folder_child_yn,
+         board_folder_path, board_folder_sort, board_folder_reg_date, board_folder_reg_emp_sn)
+        VALUES (#{boardFolderDept}, #{boardFolderName}, #{boardFolderUpperSn}, 'N', #{boardFolderPath}, #{boardFolderSort}, NOW(), #{boardFolderRegEmpSn})
+    </insert>
+    <update id="setBoardFolderChileYn" parameterType="string">
+        UPDATE board_folder
+        SET
+            board_folder_child_yn='Y'
+        WHERE
+            board_folder_sn=#{boardFolderUpperSn}
+    </update>
+</mapper>
