@@ -65,7 +65,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="javascript:void(0);" onclick="adminPage.fn_openPage('admin/employeeList');" class="nav-link">
+                            <a href="javascript:void(0);" onclick="adminPage.fn_openPage('employeeList');" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>사원 목록</p>
                             </a>
@@ -73,7 +73,7 @@
                     </ul>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="javascript:void(0);" onclick="adminPage.fn_openPage('admin/employeeReg');" class="nav-link">
+                            <a href="javascript:void(0);" onclick="adminPage.fn_openPage('employeeReg');" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>사원 등록</p>
                             </a>

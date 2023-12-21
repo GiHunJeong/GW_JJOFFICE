@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.GW.JJOFFICE.JJOFFICE.admin.employee.repository.EmployeeRepository">
+    <select id="getEmployeeListTotal" parameterType="map" resultType="int">
+        select
+            count(*)
+        from
+            employee as d
+        where
+            1=1
+        <if test='searchKeyword != null and !"".equals(searchKeyword)'>
+            and
+            d.emp_name like concat('%', #{searchKeyword}, '%')
+        </if>
+    </select>
+    <select id="getEmployeeList" parameterType="map" resultType="map">
+        select
+            d.*
+        from
+            employee as d
+        where
+            1=1
+        <if test='searchKeyword != null and !"".equals(searchKeyword)'>
+            and
+            d.emp_name like concat('%', #{searchKeyword}, '%')
+        </if>
+        order by d.reg_date
+    </select>
+</mapper>

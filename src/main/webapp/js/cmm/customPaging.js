@@ -22,7 +22,7 @@ var customPaging = {
      *                                                3번 컬럼에 컬럼네임2 자료들표기,
      *                                                5번 컬럼에 컬럼네임3 자료들표기
      *                                                a태그 사용 1:컬럼네임:a, 클래스명: customPaging-a
-     *                                                button 사용 4:[button]:버튼네임, 클래스명: customPaging-btn
+     *                                                button 사용 4:[button]:버튼네임:커스텀 클래스 string(생략가능), 클래스명: customPaging-btn
      */
     init : function(contentViewCnt, contentTotalCnt, contentUrl, contentId, pagingId, contentInColCnt, contentColInfo) {
         // 페이징 번호 선택 css
@@ -104,7 +104,7 @@ var customPaging = {
         var result = customAjax.fn_customAjax(customPaging.global.contentUrl, data);
         if(result.flag && result.rs.length != 0) {
             let html = '';
-            let button = `<button type="button" class="customPaging-btn btn btn-block btn-outline-primary">!!btnTagName!!</button>`;
+            let button = `<button type="button" class="customPaging-btn">!!btnTagName!!</button>`;
             let tr = `<tr>!!trTag!!</tr>`;
             let a = `<a href="javascript:void(0)" class="customPaging-a">!!aTag!!</a>`
             let pageHtml = '';
@@ -125,7 +125,13 @@ var customPaging = {
                         pageHtml = pageHtml.replace(col.split(":")[0]+"!C!O!L!U!M!N!", a).replace("!!aTag!!", value[colName]);
                     }else if (colName === '[button]') {
                         let btnName = col.split(":")[2];
-                        pageHtml = pageHtml.replace(col.split(":")[0]+"!C!O!L!U!M!N!", button).replace("!!btnTagName!!", btnName);
+                        let customButtonClass = col.split(":")[3];
+                        if(customButtonClass != 'undefined' || customButtonClass != '' || customButtonClass != 'null' || customButtonClass != null) {
+                            let customButton = `<button type="button" class="customPaging-btn `+customButtonClass+`">!!btnTagName!!</button>`;
+                            pageHtml = pageHtml.replace(col.split(":")[0]+"!C!O!L!U!M!N!", customButton).replace("!!btnTagName!!", btnName);
+                        } else {
+                            pageHtml = pageHtml.replace(col.split(":")[0]+"!C!O!L!U!M!N!", button).replace("!!btnTagName!!", btnName);
+                        }
                     }else {
                         pageHtml = pageHtml.replace(col.split(":")[0]+"!C!O!L!U!M!N!", value[colName]);
                     }

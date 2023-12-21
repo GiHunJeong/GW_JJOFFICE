@@ -25,21 +25,49 @@
   </div><!-- /.container-fluid -->
 </div>
 <!-- /.content-header -->
-<div>
-  <table>
-    <thead>
-      <th>사원명</th>
-      <th>사  번</th>
-      <th>사원ID</th>
-    </thead>
-    <tbody>
-    <c:forEach var="e" items="${empList}">
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title" style="margin-top: 10px;">문서양식</h3>
+    <%-- 검색bar --%>
+    <div class="form-inline justify-content-end">
+      <div class="input-group">
+        <input id="searchKeyword" class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button id="searchBtn" class="btn btn-sidebar" onclick="employeeList.searchAction();" style="background-color: #007bff;">
+            <i class="fas fa-search fa-fw"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <%-- 검색bar --%>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    <table class="table table-bordered">
+      <thead>
       <tr>
-        <td>${e.emp_name}</td>
-        <td>${e.emp_sn}</td>
-        <td>${e.emp_login_id}</td>
+        <th>사원명</th>
+        <th>사  번</th>
+        <th>사원ID</th>
+        <th>연락처</th>
+        <th>입사일</th>
+        <th></th>
+        <th></th>
       </tr>
-    </c:forEach>
-    </tbody>
-  </table>
+      </thead>
+      <tbody id="employeeList">
+
+      </tbody>
+    </table>
+  </div>
+  <!-- /.card-body -->
+  <div class="card-footer clearfix">
+    <ul id="paging" class="pagination pagination-sm m-0 justify-content-center">
+
+    </ul>
+  </div>
 </div>
+<script type="text/javascript" src="/js/jjoffice/admin/employee/employeeList.js"></script>
+<script>
+  employeeList.init();
+</script>

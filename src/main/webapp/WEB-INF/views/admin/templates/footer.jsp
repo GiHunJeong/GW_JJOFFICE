@@ -59,5 +59,6 @@
         <script src="resources/dist/js/adminlte.js"></script>
         <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
         <script src="resources/dist/js/pages/dashboard.js"></script>
+        <script type="text/javascript" src="/js/cmm/customPaging.js"></script>
     </body>
 </html>
