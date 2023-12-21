@@ -10,11 +10,29 @@ var boardSetting = {
                 return;
             }
             if($('#upperFolderName').val() == '') {
+                $('#selectFolderSort').val($(this).attr("sort"));
+                $('#modifyFolderSort').val($(this).attr("sort"));
+                //$('#modifyFolderUrl').val($(this).attr("href"));
+
                 $('#upperFolderName').val($(this).parent().find('p').eq(0).text());
+                $('#modifyFolderName').val($(this).parent().find('p').eq(0).text());
+                $('#deleteFolderName').val($(this).parent().find('p').eq(0).text());
+
                 $('#upperFolderSn').val($(this).val());
+                $('#modifyFolderSn').val($(this).val());
+                $('#deleteFolderSn').val($(this).val());
             }else {
+                $('#selectFolderSort').val('');
+                $('#modifyFolderSort').val('');
+                //$('#modifyFolderUrl').val('');
+
                 $('#upperFolderName').val('');
+                $('#modifyFolderName').val('');
+                $('#deleteFolderName').val('');
+
                 $('#upperFolderSn').val('');
+                $('#modifyFolderSn').val('');
+                $('#deleteFolderSn').val('');
             }
         });
     },
@@ -24,30 +42,30 @@ var boardSetting = {
             let menu = '';
             if(x.board_folder_dept == '0') {
                 if(x.board_folder_child_yn == 'N') {
-                    menu = `<li class="nav-item"><input class="folderCheck" type="checkbox" value="`+x.board_folder_sn+`"/><a href="#" class="nav-link"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+ `</p></a>`;
+                    menu = `<li class="nav-item"><input class="folderCheck" type="checkbox" sort="`+x.board_folder_sort+`" value="`+x.board_folder_sn+`" style="float: left; margin-top: 14px;"/><a href="#" class="nav-link" style="margin-left: 14px;"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+ `</p></a>`;
                 }else {
-                    menu = `<li class="nav-item"><input class="folderCheck" type="checkbox" value="`+x.board_folder_sn+`"/><a href="#" class="nav-link"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+`<i class="right fas fa-angle-left"></i></p></a><ul menu="`+x.board_folder_sn+`" class="nav nav-treeview" style="display: none;"></ul>`;
+                    menu = `<li class="nav-item"><input class="folderCheck" type="checkbox" sort="`+x.board_folder_sort+`" value="`+x.board_folder_sn+`" style="float: left; margin-top: 14px;"/><a href="#" class="nav-link" style="margin-left: 14px;"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+`<i class="right fas fa-angle-left"></i></p></a><ul menu="`+x.board_folder_sn+`" class="nav nav-treeview" style="display: none;"></ul>`;
                 }
                 $('#menu').append(menu);
             }else if(x.board_folder_dept == '1') {
                 if(x.board_folder_child_yn == 'N') {
-                    menu = `<li class="nav-item"><input class="folderCheck" type="checkbox" value="`+x.board_folder_sn+`"/><a href="#" class="nav-link"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+ `</p></a>`;
+                    menu = `<li class="nav-item"><input class="folderCheck" type="checkbox" sort="`+x.board_folder_sort+`" value="`+x.board_folder_sn+`" style="float: left; margin-top: 14px;"/><a href="#" class="nav-link" style="margin-left: 14px;"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+ `</p></a>`;
                 }else {
-                    menu = `<li class="nav-item"><input class="folderCheck" type="checkbox" value="`+x.board_folder_sn+`"/><a href="#" class="nav-link"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+`<i class="right fas fa-angle-left"></i></p></a><ul menu="`+x.board_folder_sn+`" class="nav nav-treeview" style="display: none;"></ul>`;
+                    menu = `<li class="nav-item"><input class="folderCheck" type="checkbox" sort="`+x.board_folder_sort+`" value="`+x.board_folder_sn+`" style="float: left; margin-top: 14px;"/><a href="#" class="nav-link" style="margin-left: 14px;"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+`<i class="right fas fa-angle-left"></i></p></a><ul menu="`+x.board_folder_sn+`" class="nav nav-treeview" style="display: none;"></ul>`;
                 }
                 $("ul[menu='"+x.board_folder_upper_sn+"']").append(menu);
             }else if(x.board_folder_dept == '2') {
                 if(x.board_folder_child_yn == 'N') {
-                    menu = `<li class="nav-item"><input class="folderCheck" type="checkbox" value="`+x.board_folder_sn+`"/><a href="#" class="nav-link"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+ `</p></a>`;
+                    menu = `<li class="nav-item"><input class="folderCheck" type="checkbox" sort="`+x.board_folder_sort+`" value="`+x.board_folder_sn+`" style="float: left; margin-top: 14px;"/><a href="#" class="nav-link" style="margin-left: 14px;"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+ `</p></a>`;
                 }else {
-                    menu = `<li class="nav-item"><input class="folderCheck" type="checkbox" value="`+x.board_folder_sn+`"/><a href="#" class="nav-link"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+`<i class="right fas fa-angle-left"></i></p></a><ul menu="`+x.board_folder_sn+`" class="nav nav-treeview" style="display: none;"></ul>`;
+                    menu = `<li class="nav-item"><input class="folderCheck" type="checkbox" sort="`+x.board_folder_sort+`" value="`+x.board_folder_sn+`" style="float: left; margin-top: 14px;"/><a href="#" class="nav-link" style="margin-left: 14px;"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+`<i class="right fas fa-angle-left"></i></p></a><ul menu="`+x.board_folder_sn+`" class="nav nav-treeview" style="display: none;"></ul>`;
                 }
                 $("ul[menu='"+x.board_folder_upper_sn+"']").append(menu);
             }else if(x.board_folder_dept == '3') {
                 if(x.board_folder_child_yn == 'N') {
-                    menu = `<li class="nav-item"><input class="folderCheck" type="checkbox" value="`+x.board_folder_sn+`"/><a href="#" class="nav-link"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+ `</p></a>`;
+                    menu = `<li class="nav-item"><input class="folderCheck" type="checkbox" sort="`+x.board_folder_sort+`" value="`+x.board_folder_sn+`" style="float: left; margin-top: 14px;"/><a href="#" class="nav-link" style="margin-left: 14px;"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+ `</p></a>`;
                 }else {
-                    menu = `<li class="nav-item"><input class="folderCheck" type="checkbox" value="`+x.board_folder_sn+`"/><a href="#" class="nav-link"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+`<i class="right fas fa-angle-left"></i></p></a><ul menu="`+x.board_folder_sn+`" class="nav nav-treeview" style="display: none;"></ul>`;
+                    menu = `<li class="nav-item"><input class="folderCheck" type="checkbox" sort="`+x.board_folder_sort+`" value="`+x.board_folder_sn+`" style="float: left; margin-top: 14px;"/><a href="#" class="nav-link" style="margin-left: 14px;"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+`<i class="right fas fa-angle-left"></i></p></a><ul menu="`+x.board_folder_sn+`" class="nav nav-treeview" style="display: none;"></ul>`;
                 }
                 $("ul[menu='"+x.board_folder_upper_sn+"']").append(menu);
             }

@@ -6,6 +6,7 @@
             bf.*
         from
             board_folder as bf
+        ORDER BY bf.board_folder_dept, bf.board_folder_sort
     </select>
     <select id="getBoardFolderInfo" resultType="map" parameterType="string">
         select

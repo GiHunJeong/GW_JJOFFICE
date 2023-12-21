@@ -25,7 +25,7 @@
   </div><!-- /.container-fluid -->
 </div>
 <!-- /.content-header -->
-<div>
+<%--<div>
   <table>
     <tr>
       <td>사원명</td>
@@ -69,6 +69,110 @@
     </tr>
   </table>
   <button onclick="employeeReg.signUpAction();">회원가입</button>
+</div>--%>
+
+<div class="register-box">
+  <%-- 타이틀 --%>
+  <div class="register-logo">
+    <p><b>JJ</b>OFFICE</p>
+  </div>
+
+  <div class="card">
+    <div class="card-body register-card-body">
+      <p class="login-box-msg">Register a new employee</p>
+        <div class="input-group mb-3">
+          <input id="empName" type="text" class="form-control" placeholder="사원명">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input id="empLoginId" type="email" class="form-control" placeholder="아이디">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input id="empLoginPw" type="password" class="form-control" placeholder="비밀번호">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input id="empLoginPwChk" type="password" class="form-control" placeholder="비밀번호체크">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+      <div class="input-group mb-3">
+        <input id="empSn" type="text" class="form-control" placeholder="사원번호">
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fas fa-user"></span>
+          </div>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <input id="empPhone" type="text" class="form-control" placeholder="전화번호">
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fas fa-phone"></span>
+          </div>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <input id="empAddr" type="text" class="form-control" placeholder="주소">
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fas fa-address-book"></span>
+          </div>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <input id="empAddrDetail" type="text" class="form-control" placeholder="상세주소">
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fas fa-address-book"></span>
+          </div>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <input id="empAddrZipcode" type="text" class="form-control" placeholder="우편번호">
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fas fa-address-book"></span>
+          </div>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <input id="empPhoto" type="text" class="form-control" placeholder="사진">
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <span class="fas fa-user"></span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+
+        </div>
+        <!-- /.col -->
+        <div class="col-4">
+          <button class="btn btn-primary btn-block" onclick="employeeReg.signUpAction();">Register</button>
+        </div>
+        <!-- /.col -->
+      </div>
+    </div>
+    <!-- /.form-box -->
+  </div><!-- /.card -->
 </div>
 <script type="text/javascript" src="/js/jjoffice/admin/employee/employeeReg.js"></script>
 <script>

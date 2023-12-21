@@ -61,7 +61,7 @@
     <div class="col-md-8">
       <div class="card card-secondary">
         <div class="card-header">
-          <h3 class="card-title">게시판 추가/삭제</h3>
+          <h3 class="card-title">게시판 추가</h3>
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
               <i class="fas fa-minus"></i>
@@ -69,14 +69,60 @@
           </div>
         </div>
         <div class="card-body">
-          <%-- 게시판 추가/삭제 --%>
-          <input id="upperFolderSn" class="form-control" type="hidden" placeholder="선택한 상위 폴더 이름"/>
+          <%-- 게시판 추가 --%>
+          <input id="upperFolderSn" class="form-control" type="hidden"/>
           <input id="upperFolderName" class="form-control" type="text" placeholder="선택한 상위 폴더 이름" readonly/>
           <input id="newFolderName" class="form-control" type="text" placeholder="폴더 이름"/>
           <input id="folderSort" class="form-control" type="text" placeholder="폴더 순서"/>
           <input id="folderUrl" class="form-control" type="text" placeholder="URL"/>
-          <button type="button" class="btn btn-block btn-outline-primary" onclick="boardSetting.saveAction();">추가</button>
-          <%-- 게시판 추가/삭제 --%>
+          <div style="text-align: center; margin-top: 10px;">
+            <div style="display: inline-block;"><button type="button" class="btn btn-block btn-outline-primary" onclick="boardSetting.saveAction();">추가</button></div>
+          </div>
+          <%-- 게시판 추가 --%>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+      <div class="card card-secondary">
+        <div class="card-header">
+          <h3 class="card-title">게시판 수정</h3>
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+          <%-- 게시판 수정 --%>
+            <input id="modifyFolderSn" class="form-control" type="hidden"/>
+            <input id="modifyFolderName" class="form-control" type="text" placeholder="선택한 폴더 이름"/>
+            <input id="modifyFolderSort" class="form-control" type="text" placeholder="선택한 폴더 순서"/>
+            <input id="modifyFolderUrl" class="form-control" type="text" placeholder="URL"/>
+            <div style="text-align: center; margin-top: 10px;">
+              <div style="display: inline-block;"><button type="button" class="btn btn-block btn-outline-warning" onclick="">수정</button></div>
+            </div>
+          <%-- 게시판 수정 --%>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+      <div class="card card-secondary">
+        <div class="card-header">
+          <h3 class="card-title">게시판 삭제</h3>
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+          <%-- 게시판 삭제 --%>
+          <input id="deleteFolderSn" class="form-control" type="hidden"/>
+          <input id="deleteFolderName" class="form-control" type="text" placeholder="선택한 상위 폴더 이름" readonly/>
+          <div style="text-align: center; margin-top: 10px;">
+            <div style="display: inline-block;"><button type="button" class="btn btn-block btn-outline-danger" onclick="">삭제</button></div>
+          </div>
+          <%-- 게시판 삭제 --%>
         </div>
         <!-- /.card-body -->
       </div>
