@@ -49,7 +49,7 @@
                 <li class="nav-header">TEST MENU</li>
                 <li class="nav-item">
                     <a href="javascript:void(0);"  class="nav-link">
-                        <i class="nav-icon fas fa-pen"></i>
+                        <i class="nav-icon fas fa-id-card"></i>
                         <p>
                             인사
                             <i class="fas fa-angle-left right"></i>
@@ -59,7 +59,7 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="javascript:void(0);" onclick="mainPage.fn_openPage('personalRecord');" class="nav-link">
-                                <i class="far fa-copy nav-icon"></i>
+                                <i class="far fa-circle nav-icon"></i>
                                 <p>인사기록카드</p>
                             </a>
                         </li>
@@ -77,19 +77,19 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="javascript:void(0);" onclick="mainPage.fn_openPage('docWrite');" class="nav-link">
-                                <i class="far fa-copy nav-icon"></i>
+                                <i class="far fa-circle nav-icon"></i>
                                 <p>기안</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="javascript:void(0);" onclick="mainPage.fn_openPage('sentDocBox');" class="nav-link">
-                                <i class="far fa-copy nav-icon"></i>
+                                <i class="far fa-circle nav-icon"></i>
                                 <p>발신 문서함</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="javascript:void(0);" onclick="mainPage.fn_openPage('receiveDocBox');" class="nav-link">
-                                <i class="far fa-copy nav-icon"></i>
+                                <i class="far fa-circle nav-icon"></i>
                                 <p>수신 문서함</p>
                             </a>
                         </li>
@@ -134,7 +134,7 @@
                 <%-- 게시판 트리뷰 --%>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-folder"></i>
+                        <i class="nav-icon fas fa-book"></i>
                         <p>
                             게시판
                             <i class="right fas fa-angle-left"></i>

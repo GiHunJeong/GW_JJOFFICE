@@ -45,7 +45,7 @@
         <!-- Sidebar Menu -->
         <!-- 메뉴 -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar nav-child-indent flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-header">ADMIN MENU</li>
                 <%--<li class="nav-item">
                     <a href="javascript:void(0);" onclick="fn_openPage('menu1');" class="nav-link">
@@ -57,7 +57,7 @@
                 </li>--%>
                 <li class="nav-item">
                     <a href="javascript:void(0);" class="nav-link">
-                        <i class="nav-icon fas fa-copy"></i>
+                        <i class="nav-icon fas fa-user"></i>
                         <p>
                             사원 관리
                             <i class="fas fa-angle-left right"></i>

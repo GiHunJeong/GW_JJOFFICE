@@ -9,6 +9,7 @@ var mainPage = {
         if($('#alertMsg').val() != '') {
             alert($('#alertMsg').val());
         }
+        $(document).on('click', )
     },
     adminModeAction : function() {
         location.href = "/admin";
