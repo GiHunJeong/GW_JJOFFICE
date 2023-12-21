@@ -70,7 +70,7 @@
   </table>
   <button onclick="employeeReg.signUpAction();">회원가입</button>
 </div>
-<script type="text/javascript" src="/js/jjoffice/admin/employeeReg.js"></script>
+<script type="text/javascript" src="/js/jjoffice/admin/employee/employeeReg.js"></script>
 <script>
   employeeReg.init();
 </script>

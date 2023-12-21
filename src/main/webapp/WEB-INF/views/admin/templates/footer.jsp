@@ -21,9 +21,13 @@
 
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
-                <!-- Control sidebar content goes here -->
-                <div><a href="main">사용자</a></div>
-                <div><a href="/logout">로그아웃</a></div>
+                <div class="card" style="background-color: #343a40;">
+                        <div class="card-body">
+                                <!-- Control sidebar content goes here -->
+                                <button class="btn btn-block btn-secondary" style="color : #fff;" onclick="adminPage.userModeAction();">사용자</button>
+                                <button class="btn btn-block btn-danger" style="color : #fff;" onclick="adminPage.logoutAction();">로그아웃</button>
+                        </div>
+                </div>
         </aside>
         <!-- /.control-sidebar -->
         </div>

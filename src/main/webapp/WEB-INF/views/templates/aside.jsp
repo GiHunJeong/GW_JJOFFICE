@@ -51,6 +51,24 @@
                     <a href="javascript:void(0);"  class="nav-link">
                         <i class="nav-icon fas fa-pen"></i>
                         <p>
+                            인사
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="right badge badge-danger">New</span>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="javascript:void(0);" onclick="mainPage.fn_openPage('personalRecord');" class="nav-link">
+                                <i class="far fa-copy nav-icon"></i>
+                                <p>인사기록카드</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript:void(0);"  class="nav-link">
+                        <i class="nav-icon fas fa-pen"></i>
+                        <p>
                             전자결재
                             <i class="fas fa-angle-left right"></i>
                             <span class="right badge badge-danger">New</span>
@@ -58,19 +76,19 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="javascript:void(0);" onclick="fn_openPage('docWrite');" class="nav-link">
+                            <a href="javascript:void(0);" onclick="mainPage.fn_openPage('docWrite');" class="nav-link">
                                 <i class="far fa-copy nav-icon"></i>
                                 <p>기안</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="javascript:void(0);" onclick="fn_openPage('sentDocBox');" class="nav-link">
+                            <a href="javascript:void(0);" onclick="mainPage.fn_openPage('sentDocBox');" class="nav-link">
                                 <i class="far fa-copy nav-icon"></i>
                                 <p>발신 문서함</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="javascript:void(0);" onclick="fn_openPage('receiveDocBox');" class="nav-link">
+                            <a href="javascript:void(0);" onclick="mainPage.fn_openPage('receiveDocBox');" class="nav-link">
                                 <i class="far fa-copy nav-icon"></i>
                                 <p>수신 문서함</p>
                             </a>
@@ -88,25 +106,25 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="javascript:void(0);" onclick="fn_openPage('menu1');" class="nav-link">
+                            <a href="javascript:void(0);" onclick="mainPage.fn_openPage('menu1');" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>일일근태등록</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="javascript:void(0);" onclick="fn_openPage('menu2');" class="nav-link">
+                            <a href="javascript:void(0);" onclick="mainPage.fn_openPage('menu2');" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>근태현황</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="javascript:void(0);" onclick="fn_openPage('menu1');" class="nav-link">
+                            <a href="javascript:void(0);" onclick="mainPage.fn_openPage('menu1');" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>출장신청</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="javascript:void(0);" onclick="fn_openPage('menu2');" class="nav-link">
+                            <a href="javascript:void(0);" onclick="mainPage.fn_openPage('menu2');" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>휴가신청</p>
                             </a>
@@ -133,44 +151,3 @@
     </div>
     <!-- /.sidebar -->
 </aside>
-<script>
-    function fn_openPage(menuName) {
-        $('#content').load(menuName);
-    }
-    menu();
-    function menu() {
-        let menuList = customAjax.fn_customAjax('/ajax/boardSetting/menuList');
-        $.each(menuList.rs, function(i, x) {
-            let menu = '';
-            if(x.board_folder_dept == '0') {
-                if(x.board_folder_child_yn == 'N') {
-                    menu = `<li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+ `</p></a>`;
-                }else {
-                    menu = `<li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+`<i class="right fas fa-angle-left"></i></p></a><ul menu="`+x.board_folder_sn+`" class="nav nav-treeview" style="display: none;"></ul>`;
-                }
-                $('#menu').append(menu);
-            }else if(x.board_folder_dept == '1') {
-                if(x.board_folder_child_yn == 'N') {
-                    menu = `<li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+ `</p></a>`;
-                }else {
-                    menu = `<li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+`<i class="right fas fa-angle-left"></i></p></a><ul menu="`+x.board_folder_sn+`" class="nav nav-treeview" style="display: none;"></ul>`;
-                }
-                $("ul[menu='"+x.board_folder_upper_sn+"']").append(menu);
-            }else if(x.board_folder_dept == '2') {
-                if(x.board_folder_child_yn == 'N') {
-                    menu = `<li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+ `</p></a>`;
-                }else {
-                    menu = `<li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+`<i class="right fas fa-angle-left"></i></p></a><ul menu="`+x.board_folder_sn+`" class="nav nav-treeview" style="display: none;"></ul>`;
-                }
-                $("ul[menu='"+x.board_folder_upper_sn+"']").append(menu);
-            }else if(x.board_folder_dept == '3') {
-                if(x.board_folder_child_yn == 'N') {
-                    menu = `<li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+ `</p></a>`;
-                }else {
-                    menu = `<li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon fas fa-folder"></i><p>`+x.board_folder_name+`<i class="right fas fa-angle-left"></i></p></a><ul menu="`+x.board_folder_sn+`" class="nav nav-treeview" style="display: none;"></ul>`;
-                }
-                $("ul[menu='"+x.board_folder_upper_sn+"']").append(menu);
-            }
-        })
-    }
-</script>

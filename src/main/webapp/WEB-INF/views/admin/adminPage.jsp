@@ -11,8 +11,7 @@
 <jsp:include page="/WEB-INF/views/admin/templates/cmm.jsp" flush="false"/>
 <div id="adminPageContent"></div>
 <jsp:include page="/WEB-INF/views/admin/templates/footer.jsp" flush="false"/>
+<script type="text/javascript" src="/js/jjoffice/admin/adminPage.js"
 <script>
-    $(document).on('click', '#test', function() {
-        alert('Home 눌름');
-    });
+    adminPage.init();
 </script>

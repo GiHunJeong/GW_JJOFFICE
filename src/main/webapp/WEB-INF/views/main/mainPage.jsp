@@ -11,11 +11,8 @@
 <input type="hidden" id="alertMsg" value="${msg}"/>
 <div id="content"></div>
 <jsp:include page="/WEB-INF/views/templates/footer.jsp" flush="false"/>
+<script type="text/javascript" src="/js/jjoffice/main/mainPage.js"></script>
 <script>
-    $(document).on('click', '#test', function() {
-        alert('Home 눌름');
-    });
-    if($('#alertMsg').val() != '') {
-        alert($('#alertMsg').val());
-    }
+    mainPage.init();
+    mainPage.menu();
 </script>

@@ -23,6 +23,7 @@ public class BoardAdminServiceImpl implements BoardAdminService {
     @Override
     public String setBoardFolderOne(Map<String, Object> map) {
         Map<String, Object> addMap = boardAdminRepository.getBoardFolderInfo(map.get("boardFolderUpperSn").toString());
+        if(Integer.parseInt(addMap.get("board_folder_dept").toString())+1 > 2) return "더 이상 하위 메뉴를 추가할 수 없습니다.";
         map.put("boardFolderDept", String.valueOf(Integer.parseInt(addMap.get("board_folder_dept").toString())+1));
         map.put("boardFolderPath", addMap.get("board_folder_path").toString()+"|"+map.get("boardFolderName").toString());
         System.out.println(map);
