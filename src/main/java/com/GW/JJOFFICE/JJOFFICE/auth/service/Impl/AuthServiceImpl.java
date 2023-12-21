@@ -62,7 +62,7 @@ public class AuthServiceImpl implements AuthService {
         if(!empPw.equals(empPwChk))
             return ResponseDto.setFailed("비밀번호와 비밀번호체크가 일치하지 않습니다.");
         // 임시 권한 설정
-        signUpDto.setRole("User");
+        signUpDto.setRole("ROLE_User");
         // UserEntity 생성
         EmployeeDto employeeDto = new EmployeeDto(signUpDto);
 

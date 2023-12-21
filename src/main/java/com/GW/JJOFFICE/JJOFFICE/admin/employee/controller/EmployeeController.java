@@ -31,6 +31,11 @@ public class EmployeeController {
         model.addAttribute("rs", employeeService.getEmployeeList(map));
         return "jsonView";
     }
+    @RequestMapping(value = "/ajax/employeeDel", method = RequestMethod.POST)
+    public String ajaxEmployeeDel(@RequestParam Map<String, Object> map, Model model) {
+        model.addAttribute("rs", employeeService.setEmployeeOneDel(map));
+        return "jsonView";
+    }
     @RequestMapping(value = "/employeeReg" , method = RequestMethod.GET)
     public String employeeRegPage() {
         return "admin/employee/employeeReg";

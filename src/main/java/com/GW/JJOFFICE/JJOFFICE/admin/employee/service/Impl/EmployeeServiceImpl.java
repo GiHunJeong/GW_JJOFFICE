@@ -24,4 +24,16 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<Map<String, Object>> getEmployeeList(Map<String, Object> map) {
         return employeeRepository.getEmployeeList(map);
     }
+
+    @Override
+    public String setEmployeeOneDel(Map<String, Object> map) {
+        String result = "";
+        try {
+            employeeRepository.setEmployeeOneDel(map);
+            result = "정상적으로 삭제 되었습니다.";
+        } catch (Exception e) {
+            result = "삭제에 실패했습니다.";
+        }
+        return result;
+    }
 }

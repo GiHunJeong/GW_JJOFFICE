@@ -11,4 +11,5 @@ import java.util.Map;
 public interface EmployeeRepository {
     int getEmployeeListTotal(Map<String, Object> map);
     List<Map<String, Object>> getEmployeeList(Map<String, Object> map);
+    void setEmployeeOneDel(Map<String, Object> map);
 }

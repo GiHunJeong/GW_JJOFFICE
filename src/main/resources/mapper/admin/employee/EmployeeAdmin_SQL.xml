@@ -7,7 +7,9 @@
         from
             employee as d
         where
-            1=1
+            d.use_yn = 'Y'
+            and
+            d.del_date is null
         <if test='searchKeyword != null and !"".equals(searchKeyword)'>
             and
             d.emp_name like concat('%', #{searchKeyword}, '%')
@@ -19,11 +21,21 @@
         from
             employee as d
         where
-            1=1
+            d.use_yn = 'Y'
+            and
+            d.del_date is null
         <if test='searchKeyword != null and !"".equals(searchKeyword)'>
             and
             d.emp_name like concat('%', #{searchKeyword}, '%')
         </if>
         order by d.reg_date
     </select>
+    <update id="setEmployeeOneDel" parameterType="map">
+        UPDATE employee
+        SET
+            use_yn='N',
+            del_date=NOW()
+        WHERE
+            emp_login_id=#{empLoginId}
+    </update>
 </mapper>

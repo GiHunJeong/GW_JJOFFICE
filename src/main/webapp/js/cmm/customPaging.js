@@ -21,7 +21,7 @@ var customPaging = {
      *                                                1번 컬럼에 컬럼네임1 자료들표기,
      *                                                3번 컬럼에 컬럼네임2 자료들표기,
      *                                                5번 컬럼에 컬럼네임3 자료들표기
-     *                                                a태그 사용 1:컬럼네임:a, 클래스명: customPaging-a
+     *                                                a태그 사용 1:컬럼네임:a:커스텀 클래스 string(생략가능), 클래스명: customPaging-a
      *                                                button 사용 4:[button]:버튼네임:커스텀 클래스 string(생략가능), 클래스명: customPaging-btn
      */
     init : function(contentViewCnt, contentTotalCnt, contentUrl, contentId, pagingId, contentInColCnt, contentColInfo) {
@@ -122,7 +122,13 @@ var customPaging = {
                     let aTag = col.split(":")[2];
                     let colName = col.split(":")[1];
                     if(aTag === 'a') {
-                        pageHtml = pageHtml.replace(col.split(":")[0]+"!C!O!L!U!M!N!", a).replace("!!aTag!!", value[colName]);
+                        let customAClass = col.split(":")[3];
+                        if(customAClass != 'undefined' || customAClass != '' || customAClass != 'null' || customAClass != null) {
+                            let customA = `<a href="javascript:void(0)" class="customPaging-a `+customAClass+`">!!aTag!!</a>`;
+                            pageHtml = pageHtml.replace(col.split(":")[0]+"!C!O!L!U!M!N!", customA).replace("!!aTag!!", value[colName]);
+                        } else {
+                            pageHtml = pageHtml.replace(col.split(":")[0]+"!C!O!L!U!M!N!", a).replace("!!aTag!!", value[colName]);
+                        }
                     }else if (colName === '[button]') {
                         let btnName = col.split(":")[2];
                         let customButtonClass = col.split(":")[3];

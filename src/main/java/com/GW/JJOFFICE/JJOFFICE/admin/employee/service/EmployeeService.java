@@ -10,4 +10,5 @@ public interface EmployeeService {
      * @return
      */
     List<Map<String, Object>> getEmployeeList(Map<String, Object> map);
+    String setEmployeeOneDel(Map<String, Object> map);
 }
